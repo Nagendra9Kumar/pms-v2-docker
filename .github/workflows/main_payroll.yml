@@ -30,19 +30,13 @@ jobs:
         username: ${{ secrets.AzureAppService_ContainerUsername_b4bce81048654377ae519656d8088bba }}
         password: ${{ secrets.AzureAppService_ContainerPassword_50ef88a292a44a41a949e799ce60e862 }}
 
-    - name: Convert ACR username to lowercase
-      id: acr-user
-      run: |
-        echo "username_lc=$(echo '${{ secrets.AzureAppService_ContainerUsername_b4bce81048654377ae519656d8088bba }}' | tr '[:upper:]' '[:lower:]')" >> $GITHUB_OUTPUT
-
     - name: Build and push Docker image to ACR
       uses: docker/build-push-action@v3
       with:
         context: .
         file: ./Dockerfile
         push: true
-        tags: ${{ env.REGISTRY }}/${{ steps.acr-user.outputs.username_lc }}payroll:${{ github.sha }}
-
+        tags: ${{ env.REGISTRY }}/payroll:${{ github.sha }}
   deploy:
     runs-on: ubuntu-latest
     needs: build
@@ -57,4 +51,4 @@ jobs:
         app-name: 'payroll' # This is the App Service name in Azure
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_19cb285f90754695b4f01b809e17cfc8 }}
-        images: ${{ env.REGISTRY }}/${{ steps.acr-user.outputs.username_lc }}payroll:${{ github.sha }}
+        images: ${{ env.REGISTRY }}/payroll:${{ github.sha }}
