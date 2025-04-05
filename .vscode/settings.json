@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "undefined/subscriptions/f9593323-ee83-470a-b15b-ed1c8df3ca9c/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/payroll-v2",
+    "appService.deploySubpath": "."
+}

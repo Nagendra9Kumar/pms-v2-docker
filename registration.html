@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register</title>
+
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    /* Full height gradient background */
+    body {
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      margin: 0;
+    }
+
+    /* Form container */
+    .container {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      width: 100%;
+      max-width: 500px;
+      margin: 0 auto;
+      transition: all 0.3s ease;
+    }
+
+    /* Form header */
+    h1 {
+      text-align: center;
+      color: #fff;
+      font-size: 2.2rem;
+      margin-bottom: 24px;
+    }
+
+    /* Form content */
+    .content {
+      margin-bottom: 20px;
+    }
+
+    /* Input fields */
+    .input-field {
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    .input-field input,
+    .input-field select,
+    .input-field textarea {
+      width: 100%;
+      padding: 15px;
+      border: none;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.2);
+      color: #fff;
+      font-size: 1rem;
+      outline: none;
+      transition: background 0.3s ease, transform 0.2s;
+    }
+
+    .input-field input::placeholder,
+    .input-field textarea::placeholder {
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    /* Input focus and hover effects */
+    .input-field input:hover,
+    .input-field input:focus,
+    .input-field select:hover,
+    .input-field select:focus,
+    .input-field textarea:hover,
+    .input-field textarea:focus {
+      background: rgba(255, 255, 255, 0.4);
+      transform: scale(1.02);
+    }
+
+    /* Password visibility toggle icon */
+    .toggle-password {
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    /* Submit button */
+    .action {
+      text-align: center;
+    }
+
+    .action button {
+      width: 100%;
+      padding: 15px;
+      background: #1d976c;
+      border: none;
+      border-radius: 10px;
+      color: white;
+      font-size: 1.2rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s;
+    }
+
+    .action button:hover {
+      background: #159357;
+      transform: scale(1.02);
+    }
+
+    /* Media queries for larger screens */
+    @media (min-width: 768px) {
+      .container {
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 2.2rem;
+      }
+
+      .input-field input,
+      .input-field select,
+      .input-field textarea {
+        padding: 15px;
+        font-size: 1rem;
+      }
+
+      .action button {
+        padding: 15px;
+        font-size: 1.3rem;
+      }
+    }
+
+    @media (min-width: 1200px) {
+      .container {
+        max-width: 600px;
+      }
+
+      .input-field input,
+      .input-field select,
+      .input-field textarea {
+        font-size: 1.2rem;
+        padding: 20px;
+      }
+
+      .action button {
+        padding: 20px;
+        font-size: 1.5rem;
+      }
+    }
+
+    select {
+      background-color: #34495e;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      width: 100%;
+      font-size: 16px;
+    }
+
+    select option {
+      background-color: #34495e;
+      color: white;
+    }
+
+    select:focus {
+      outline: none;
+      border: 2px solid #2980b9;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+  </style>
+
+  <script>
+    function validateForm() {
+      let fname = document.getElementById('FIRSTNAME').value;
+      let lname = document.getElementById('LASTNAME').value;
+      let empID = document.getElementById('EMPID').value;
+      let address = document.getElementById('ADDRESS').value;
+      let chkname = /^[A-Za-z]+$/;
+      let empIDRegex = /^[0-9]([0-9]22[1|5]|[0-9]h4[1|5])a\d{4}$/;
+      let password = document.getElementById('PASSWORD').value;
+      let cpassword = document.getElementById('CPASSWORD').value;
+      let passwordRegex = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.{6,})[a-zA-Z0-9!@#$%^&*]+$/;
+
+      // Check name validity
+      if (!chkname.test(fname) || !chkname.test(lname)) {
+        alert("Firstname and Lastname should not contain any numbers or symbols.");
+        return false;
+      }
+
+      // Check employee ID validity
+      if (!empIDRegex.test(empID)) {
+        alert("Employee ID must follow the format: xx22xaxxxx or xxh4xaxxxx (e.g., 23225a4502 or 22h41a45xx).");
+        return false;
+      }
+
+      // Check address validity
+      if (address.trim() === "") {
+        alert("Address cannot be empty.");
+        return false;
+      }
+
+      // Check password criteria
+      if (!passwordRegex.test(password)) {
+        alert("Password must have at least one letter, one number, and one special character.");
+        return false;
+      }
+
+      // Check if passwords match
+      if (password !== cpassword) {
+        alert("Passwords did not match.");
+        return false;
+      }
+
+      return true;
+    }
+
+    function togglePassword(id, iconId) {
+      var passwordField = document.getElementById(id);
+      var icon = document.getElementById(iconId);
+      if (passwordField.type === "password") {
+        passwordField.type = "text";
+        icon.classList.replace('fa-eye', 'fa-eye-slash');
+      } else {
+        passwordField.type = "password";
+        icon.classList.replace('fa-eye-slash', 'fa-eye');
+      }
+    }
+  </script>
+
+  <!-- Font Awesome for password toggle icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+  <div class="container">
+    <form action="registration_store.php" method="post" class="login-form" onsubmit="return validateForm()">
+      <h1>Register</h1>
+      <div class="content">
+        <div class="input-field">
+          <input type="text" name="FIRSTNAME" id="FIRSTNAME" placeholder="First Name" required />
+        </div>
+        <div class="input-field">
+          <input type="text" name="LASTNAME" id="LASTNAME" placeholder="Last Name" required />
+        </div>
+        <div class="input-field">
+          <input type="text" name="EMPID" id="EMPID" placeholder="Employee ID" required />
+        </div>
+
+        <div class="input-field">
+          <input type="email" name="EMAIL" id="EMAIL" placeholder="Email" required />
+        </div>
+        <div class="input-field">
+          <select name="GENDER" id="GENDER" required>
+            <option value="" selected disabled>-- GENDER --</option>
+            <option value="MALE">MALE</option>
+            <option value="FEMALE">FEMALE</option>
+          </select>
+        </div>
+        <div class="input-field">
+          <select name="DEPARTMENT" id="DEPARTMENT" required>
+            <option value="" selected disabled>-- DEPARTMENT --</option>
+            <option value="DESIGN">DESIGN</option>
+            <option value="CODING">CODING</option>
+            <option value="TESTING">TESTING</option>
+            <option value="HUMAN RESOURCE">HUMAN RESOURCE</option>
+            <option value="MAINTENANCE">MAINTENANCE</option>
+          </select>
+        </div>
+        <div class="input-field">
+          <textarea name="ADDRESS" id="ADDRESS" placeholder="Address" rows="1" required></textarea>
+        </div>
+        <div class="input-field">
+          <input type="password" name="PASSWORD" id="PASSWORD" placeholder="Password" required />
+          <i class="fa fa-eye toggle-password" id="togglePassword1"
+            onclick="togglePassword('PASSWORD', 'togglePassword1')"></i>
+        </div>
+        <div class="input-field">
+          <input type="password" name="CPASSWORD" id="CPASSWORD" placeholder="Confirm Password" required />
+          <i class="fa fa-eye toggle-password" id="togglePassword2"
+            onclick="togglePassword('CPASSWORD', 'togglePassword2')"></i>
+        </div>
+      </div>
+      <div class="action">
+        <button type="submit">Register</button>
+      </div>
+    </form>
+  </div>
+</body>
+
+</html>

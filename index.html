@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payroll Management System</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #ecf0f1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            padding: 20px;
+            color: #34495e;
+        }
+
+        .container {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            max-width: 450px;
+            width: 100%;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        /* Header Styles */
+        .mhead p {
+            font-size: 30px;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            letter-spacing: 1.5px;
+        }
+
+        .mhead span {
+            color: #1abc9c;
+        }
+
+        /* Signup Box */
+        .signbox {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+            margin-top: 35px;
+        }
+
+        .input-btn {
+            background-color: #1abc9c;
+            color: #fff;
+            border: none;
+            padding: 15px 0;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            max-width: 300px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .input-btn:hover {
+            background-color: #16a085;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(26, 188, 156, 0.2);
+        }
+
+        .input-btn:active {
+            background-color: #149174;
+            transform: translateY(0);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            .mhead p {
+                font-size: 24px;
+            }
+
+            .input-btn {
+                padding: 12px 0;
+                font-size: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .mhead p {
+                font-size: 22px;
+            }
+
+            .input-btn {
+                padding: 10px 0;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="mhead">
+            <p><span>Payroll</span> Management System</p>
+        </div>
+        <div class="signbox">
+            <input type="button" class="input-btn" value="Login" onclick="location.href='login.html'" />
+            <input type="button" class="input-btn" value="Register" onclick="location.href='registration.html'" />
+        </div>
+    </div>
+</body>
+
+</html>

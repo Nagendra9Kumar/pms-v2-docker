@@ -1,0 +1,214 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* Ensures padding and border are included in width/height */
+}
+
+/* Ensure full height for html and body */
+html,
+body {
+    height: 100%;
+    width: 100%;
+    background-color: #f4f4f4;
+    /* Light grey background for better contrast */
+    overflow: hidden;
+    /* Prevents scrollbars */
+}
+
+/* Container styling */
+.container {
+    background: linear-gradient(to right, #240b36, #c31432);
+    height: 100vh;
+    /* Full viewport height */
+    width: 100vw;
+    /* Full viewport width */
+    display: flex;
+    /* Use flexbox for layout */
+    flex-direction: column;
+    /* Stack content vertically */
+    align-items: center;
+    /* Center align horizontally */
+    justify-content: center;
+    /* Center align vertically */
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+    /* Softer shadow for a cleaner look */
+    padding: 20px;
+    /* Consistent padding */
+    overflow: hidden;
+    /* Prevents overflow issues */
+    border-radius: 0;
+    /* Remove border radius */
+}
+
+/* Header styling */
+.mhead {
+    color: #fff;
+    text-align: center;
+    margin-bottom: 20px;
+    /* Spacing below header */
+}
+
+#payroll_matter {
+    font-size: 2.5rem;
+    /* Responsive font size */
+    line-height: 1.3;
+    /* Line height for better readability */
+    font-weight: bold;
+    /* Make the header text bold */
+}
+
+/* Text block styling */
+.mmatt {
+    color: #fff;
+    text-align: justify;
+    width: 80%;
+    /* Adjust width for better spacing on large screens */
+    font-size: 1.1rem;
+    /* Improved readability */
+    margin-bottom: 30px;
+    /* Spacing below text block */
+}
+
+/* Signbox styling */
+.signbox {
+    width: 90%;
+    /* Full width with some margin */
+    max-width: 400px;
+    /* Max width for large screens */
+    background-color: #fff;
+    /* White background to stand out */
+    border-radius: 8px;
+    /* Rounded corners for signbox */
+    border: 1px solid #ddd;
+    /* Subtle border color for clean look */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    /* Deeper shadow for separation */
+    padding: 20px;
+    /* Consistent padding */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Center align items inside signbox */
+    margin-top: 20px;
+    /* Default margin for spacing */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* Smooth transitions */
+}
+
+.signbox:hover {
+    transform: translateY(-5px);
+    /* Lift effect on hover */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    /* Deeper shadow on hover */
+}
+
+/* Sign options styling */
+.sign_options {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+/* Input button styling */
+input[type="button"] {
+    width: 100%;
+    height: 45px;
+    /* Increased height for better clickability */
+    border-radius: 4px;
+    /* Slightly rounded corners */
+    border: 1px solid #c31432;
+    /* Border color to match the gradient */
+    background-color: #c31432;
+    /* Background color to match the gradient */
+    color: #fff;
+    /* White text color for contrast */
+    font-size: 1rem;
+    /* Consistent font size */
+    margin-top: 10px;
+    /* Spacing between buttons */
+    cursor: pointer;
+    /* Pointer cursor on hover */
+    transition: background-color 0.3s, box-shadow 0.3s;
+    /* Smooth transitions */
+    padding: 0 15px;
+    /* Horizontal padding for button */
+}
+
+input[type="button"]:hover {
+    background-color: #a21026;
+    /* Darker background on hover for effect */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    /* Slightly deeper shadow on hover */
+}
+
+/* Text styling for buttons and other text */
+#m1 {
+    font-size: 1.5rem;
+    /* Responsive font size */
+    margin: 10px 0;
+    /* Vertical margin */
+    color: #333;
+    /* Dark text color for contrast */
+}
+
+#m2,
+#m3,
+#m4 {
+    font-size: 1rem;
+    /* Responsive font size */
+    margin: 10px 0;
+    /* Vertical margin */
+    color: #333;
+    /* Dark text color for contrast */
+}
+
+#m3 {
+    color: green;
+}
+
+/* Responsive design for large screens */
+@media (min-width: 1024px) {
+    .container {
+        flex-direction: column;
+        /* Stack content vertically on large screens */
+        align-items: center;
+        /* Center align content */
+    }
+
+    .signbox {
+        margin-top: 20px;
+        /* Margin for spacing from text block */
+    }
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 1023px) {
+    .container {
+        flex-direction: column;
+        /* Stack children vertically */
+        align-items: center;
+        /* Center align horizontally */
+    }
+
+    .mmatt {
+        width: 90%;
+        /* Adjust width for small screens */
+        font-size: 1rem;
+        /* Reduce font size for better readability */
+    }
+
+    .signbox {
+        width: 90%;
+        /* Ensure signbox does not overflow */
+        margin-top: 20px;
+        /* Ensure some space above signbox */
+        margin-bottom: 20px;
+        /* Ensure space below signbox */
+        position: relative;
+        /* Ensure signbox positions correctly in flow */
+    }
+}

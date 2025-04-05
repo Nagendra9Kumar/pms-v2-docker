@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login Form</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    /* Background Gradient */
+    body {
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: "Poppins", sans-serif;
+    }
+
+    /* Login Form Container */
+    .login-form {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      padding: 40px;
+      width: 100%;
+      max-width: 400px;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      color: #fff;
+    }
+
+    .login-form h1 {
+      text-align: center;
+      font-size: 24px;
+      margin-bottom: 24px;
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .login-form .content {
+      margin-bottom: 20px;
+    }
+
+    /* Input Field Styling */
+    .login-form .input-field {
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .login-form .input-field input {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.2);
+      color: #fff;
+      font-size: 16px;
+      outline: none;
+      transition: background 0.3s;
+    }
+
+    .login-form .input-field input:focus {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    /* Password Eye Icon */
+    .login-form .input-field .toggle-password {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    /* Button Styling */
+    .login-form .action {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .login-form .action button {
+      width: 48%;
+      padding: 14px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .login-form .action button:hover {
+      transform: scale(1.05);
+    }
+
+    .login-form .action button:nth-child(1) {
+      background: #ff4b2b;
+      color: white;
+    }
+
+    .login-form .action button:nth-child(1):hover {
+      background: #ff3a1a;
+    }
+
+    .login-form .action button:nth-child(2) {
+      background: #1d976c;
+      color: white;
+    }
+
+    .login-form .action button:nth-child(2):hover {
+      background: #159357;
+    }
+
+    /* Placeholder Styling */
+    ::placeholder {
+      color: rgba(255, 255, 255, 0.7);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="login-form">
+    <form action="login_validation.php" method="post">
+      <h1>Login</h1>
+      <div class="content">
+        <div class="input-field">
+          <input type="text" name="EMPID" id="EMPID" placeholder="Employee Id" required
+            oninput="convertAdminToLowerCase()" />
+        </div>
+        <div class="input-field">
+          <input type="password" name="PASSWORD" id="PASSWORD" placeholder="Password" required />
+          <i class="toggle-password" onclick="togglePassword()">👁️</i>
+        </div>
+      </div>
+      <div class="action">
+        <button onclick="location.href='registration.html'" type="button">
+          Register
+        </button>
+        <button type="submit">Sign in</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    function convertAdminToLowerCase() {
+      var empIdField = document.getElementById("EMPID");
+      var empIdValue = empIdField.value.toLowerCase();
+
+      if (empIdValue === "admin") {
+        empIdField.value = empIdValue;
+      }
+    }
+
+    function togglePassword() {
+      var passwordField = document.getElementById("PASSWORD");
+      var toggleIcon = document.querySelector(".toggle-password");
+
+      // Toggle the password visibility
+      if (passwordField.type === "password") {
+        passwordField.type = "text";
+        toggleIcon.textContent = "🙈"; // Change the icon to 'hide'
+      } else {
+        passwordField.type = "password";
+        toggleIcon.textContent = "👁️"; // Change the icon back to 'show'
+      }
+    }
+  </script>
+</body>
+
+</html>
